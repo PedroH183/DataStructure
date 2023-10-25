@@ -57,6 +57,17 @@ class Pilha :
     def pop( self ) :
 
         apagado = self.dado
+        # new method to pop in a stack
+        
+        # aux : Node = self 
+        # ant : Node = self 
+        
+        # while aux.prox is not None:
+        #     ant = aux
+        #     aux = aux.prox 
+
+        # ant.prox = None
+        # del aux # vazamento de memoria
 
         if not self.prox:
             self.dado = None
