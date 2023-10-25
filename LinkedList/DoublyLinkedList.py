@@ -45,7 +45,9 @@ class Node:
             self.data = None
             return
 
-        aux, ant = self, self
+        aux : Node = self
+        ant : Node = self
+
         while aux.prox is not None:
             ant = aux
             aux = aux.prox 
@@ -56,8 +58,7 @@ class Node:
     def printList( self ):
 
         aux = self
-        return self._auxPrintAuxiliar( aux )
-
+        return self.auxPrintAuxiliar( aux, False )
 
     def printDouble( self ):
         """
@@ -66,31 +67,32 @@ class Node:
             valores dentro da lista.
         """
 
-        ant, aux = self, self
-        self._auxPrintAuxiliar( aux ) # imprime todos na ordem de insercção 
+        ant : Node = self
+        aux : Node = self
+        self.auxPrintAuxiliar( aux, False ) # imprime todos na ordem de insercção 
 
         while ant.prox is not None:
             ant = ant.prox
 
-        self._auxPrintAuxiliar( ant, isReverse= True) # imprime na ordem inversa de insercção
+        self.auxPrintAuxiliar( ant, True) # imprime na ordem inversa de insercção
         
         return True
 
-    def _auxPrintAuxiliar( inicio, isReverse = False):
+    def auxPrintAuxiliar( self, inicio, isReverse ):
         # inicio : Node and fim : Node
 
         pointer_start : Node = inicio
         
-        if not isReverse:
+        if isReverse:
             while pointer_start is not None:
                 print( pointer_start.data )
-                pointer_start = pointer_start.prox
+                pointer_start = pointer_start.ant
             
             return True
         
         while pointer_start is not None:
             print( pointer_start.data )
-            pointer_start = pointer_start.ant
+            pointer_start = pointer_start.prox
 
         return True
 
@@ -104,16 +106,11 @@ new_queue.insertEnd(5)
 new_queue.insertEnd(6)
 new_queue.insertEnd(7)
 new_queue.insertEnd(8)
-print("--" * 50)
-new_queue.printList()
-print("--" * 50)
-new_queue.popStart()
-print("--" * 50)
-new_queue.printList()
 
+new_queue.printDouble()
 
 # new_queue.pop()
 # new_queue.pop()
 # new_queue.pop()
-print("--" * 50)
+# print("--" * 50)
 # new_queue.printList()
