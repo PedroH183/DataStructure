@@ -80,18 +80,18 @@ class BinaryTree:
     node.printInOrder(node.right)
 
 
-  def deleteValue(self, value):
+  def deleteValue(self, value) -> True | False | None:
     """
       Vai ser passado um valor e tenho que deletar ele.
       returns true if succesful deleted
-      returns false if dont deleted 
+      returns false if dont deleted
+      returns None if don't exist
     """
 
     if self.data is None:
       return None
 
-    ant = None
-    current = self
+    ant, current = None, self
 
     while True:
 
@@ -134,9 +134,17 @@ class BinaryTree:
     aux = current.left
     
     while aux.right is not None:
+      ant = aux
       aux = aux.right
 
-    current = aux
+    current.data = aux.data
+
+    if ant.data > current.data:
+        ant.left = None
+
+    if ant.data < current.data:
+        ant.right = None
+    
     return True
 
 
@@ -148,7 +156,7 @@ new_t.insert(7)
 new_t.insert(8)
 
 new_t.printInOrder(new_t)
-print(new_t.deleteValue(25))
+print(new_t.deleteValue(10))
 new_t.printInOrder(new_t)
 
 
