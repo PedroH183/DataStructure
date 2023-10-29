@@ -66,7 +66,7 @@ class BinaryTree:
           return None
 
         current = current.left
-    
+
   def printInOrder(self, node):
     """
       Função que deve printar em ordem os valores
@@ -98,7 +98,7 @@ class BinaryTree:
       if current.data == value:
         break
 
-      if current.data > value:
+      if value > current.data:
 
         if current.right is None:
           return None
@@ -106,7 +106,7 @@ class BinaryTree:
         ant = current
         current = current.right
 
-      if current.data < value:
+      if value < current.data:
 
         if current.left is None:
           return None
@@ -114,7 +114,7 @@ class BinaryTree:
         ant = current
         current = current.left
 
-    # caso em que não tenho nós na direita
+    # caso em que não tenho nós na esquerda
     if current.left is None:
       
       # to apagando a raiz da arvore
@@ -123,10 +123,10 @@ class BinaryTree:
         return True
       
       if ant.data > current.data:
-        ant.left = current
+        ant.left = current.right
 
       if ant.data < current.data:
-        ant.right = current
+        ant.right = current.right
       
       return True
 
@@ -148,7 +148,7 @@ new_t.insert(7)
 new_t.insert(8)
 
 new_t.printInOrder(new_t)
-print(new_t.search(4))
+print(new_t.deleteValue(25))
 new_t.printInOrder(new_t)
 
 
