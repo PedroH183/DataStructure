@@ -80,7 +80,7 @@ class BinaryTree:
     node.printInOrder(node.right)
 
 
-  def deleteValue(self, value) -> True | False | None:
+  def deleteValue(self, value) -> True or False or None:
     """
       Vai ser passado um valor e tenho que deletar ele.
       returns true if succesful deleted
@@ -156,7 +156,7 @@ new_t.insert(7)
 new_t.insert(8)
 
 new_t.printInOrder(new_t)
-print(new_t.deleteValue(10))
+print(new_t.deleteValue(4))
 new_t.printInOrder(new_t)
 
 
