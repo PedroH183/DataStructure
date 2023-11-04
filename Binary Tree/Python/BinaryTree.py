@@ -86,6 +86,11 @@ class BinaryTree:
       returns true if succesful deleted
       returns false if dont deleted
       returns None if don't exist
+
+      current é a referencia que quero apagar
+      ant é o nó que tem a referencia para current
+
+      # Vazamento de memoria corrigido.
     """
 
     if self.data is None:
@@ -93,6 +98,7 @@ class BinaryTree:
 
     ant, current = None, self
 
+    # procurando o valor na arvore 
     while True:
 
       if current.data == value:
@@ -140,10 +146,14 @@ class BinaryTree:
     current.data = aux.data
 
     if ant.data > current.data:
-        ant.left = None
+      temp_delete = ant.left
+      ant.left = None
+      del temp_delete
 
     if ant.data < current.data:
-        ant.right = None
+      temp_delete = ant.right
+      ant.right = None
+      del temp_delete
     
     return True
 
@@ -157,6 +167,8 @@ new_t.insert(8)
 
 new_t.printInOrder(new_t)
 print(new_t.deleteValue(4))
+print(new_t.deleteValue(10))
+print(new_t.deleteValue(25))
 new_t.printInOrder(new_t)
 
 
