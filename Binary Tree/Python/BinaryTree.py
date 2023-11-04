@@ -158,17 +158,17 @@ class BinaryTree:
     return True
 
 
+if __name__ == "__main__":
+  new_t = BinaryTree(10)
+  new_t.insert(4)
+  new_t.insert(25)
+  new_t.insert(7)
+  new_t.insert(8)
 
-new_t = BinaryTree(10)
-new_t.insert(4)
-new_t.insert(25)
-new_t.insert(7)
-new_t.insert(8)
-
-new_t.printInOrder(new_t)
-print(new_t.deleteValue(4))
-print(new_t.deleteValue(10))
-print(new_t.deleteValue(25))
-new_t.printInOrder(new_t)
+  new_t.printInOrder(new_t)
+  print(new_t.deleteValue(4))
+  print(new_t.deleteValue(10))
+  print(new_t.deleteValue(25))
+  new_t.printInOrder(new_t)
 
 
