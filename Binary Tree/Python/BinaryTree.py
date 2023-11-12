@@ -38,7 +38,7 @@ class BinaryTree:
 
         return data
 
-  def search( self, value ):
+  def search( self, value ) -> tuple:
     """
       Método que deve retornar true ou false caso o valor exista ou não na arvore.
     """
@@ -47,24 +47,27 @@ class BinaryTree:
       return None
 
     current : BinaryTree = self
+    ant = None
 
     while True:
 
       if value == current.data:
-        return current.data
+        return (current, ant)
 
       if value > current.data:
         
         if current.right is None:
-          return None
-
+          return (None, None)
+        
+        ant = current
         current = current.right
 
       if value < current.data:
 
         if current.left is None:
-          return None
+          return (None, None)
 
+        ant = current
         current = current.left
 
   def printInOrder(self, node):
@@ -90,85 +93,70 @@ class BinaryTree:
       current é a referencia que quero apagar
       ant é o nó que tem a referencia para current
 
-      # Vazamento de memoria corrigido.
     """
 
     if self.data is None:
       return None
 
-    ant, current = None, self
+    current, ant = self.search(value)
 
-    # procurando o valor na arvore 
-    while True:
-
-      if current.data == value:
-        break
-
-      if value > current.data:
-
-        if current.right is None:
-          return None
-
-        ant = current
-        current = current.right
-
-      if value < current.data:
-
-        if current.left is None:
-          return None
-
-        ant = current
-        current = current.left
+    if current is None:
+      return False
 
     # caso em que não tenho nós na esquerda
     if current.left is None:
       
       # to apagando a raiz da arvore
       if ant is None:
-        current = current.right
+        
+        if current.right is None:
+          current.data = None
+          return True
+
+        current.data = current.right.data
+        current.right = current.right.right
+        current.left = current.right.left
+
         return True
       
       if ant.data > current.data:
-        ant.left = current.right
+        ant.left = current.right # pode ser None
 
       if ant.data < current.data:
-        ant.right = current.right
+        ant.right = current.right # pode ser None
       
       return True
 
     # caso geral
-    aux = current.left
-    
+    aux : BinaryTree = current.left
+    ant_aux = current
+
     while aux.right is not None:
-      ant = aux
+      ant_aux = aux
       aux = aux.right
 
-    current.data = aux.data
-
-    if ant.data > current.data:
-      temp_delete = ant.left
-      ant.left = None
-      del temp_delete
-
-    if ant.data < current.data:
-      temp_delete = ant.right
-      ant.right = None
-      del temp_delete
+    if ant_aux is current:
+      current.left = None
     
+    current.data = aux.data
+    ant_aux.right = aux.left
+
     return True
 
 
 if __name__ == "__main__":
   new_t = BinaryTree(10)
-  new_t.insert(4)
-  new_t.insert(25)
   new_t.insert(7)
+  new_t.insert(4)
   new_t.insert(8)
+  new_t.insert(4)
+  new_t.insert(6)
+  new_t.insert(5)
+  new_t.insert(5)
+
 
   new_t.printInOrder(new_t)
-  print(new_t.deleteValue(4))
-  print(new_t.deleteValue(10))
-  print(new_t.deleteValue(25))
+  print(new_t.deleteValue(7))
   new_t.printInOrder(new_t)
 
 
