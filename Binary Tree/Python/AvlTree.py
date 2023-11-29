@@ -59,16 +59,17 @@ class AVLTree:
 
                 return node_avo
 
-
     def insertAvl( self, data ):
+        # TODO 
+        # implementar a logica de rotacionamento.
+
         # insere normal como se  fosse um BST comum
         # apos a inseri verificar se a arvore está balanceada
 
         return self.insert( data )
     
     def __repr__(self) -> str:
-        return f"node: {str(self.data)}"
-
+        return f"node w/ value: {str(self.data)}"
 
     def search( self, value ) -> tuple:
         """
@@ -113,7 +114,6 @@ class AVLTree:
         node.printInOrder(node.left)
         print(f"{node.data}")
         node.printInOrder(node.right)
-
 
     def deleteValue(self, value) -> True or False or None:
         """
