@@ -82,7 +82,6 @@ class BinaryTree:
     print(f"{node.data}")
     node.printInOrder(node.right)
 
-
   def deleteValue(self, value) -> True or False or None:
     """
       Vai ser passado um valor e tenho que deletar ele.
