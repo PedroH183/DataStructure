@@ -1,4 +1,4 @@
-class BinaryTree:
+class AVLTree:
 
     def __init__( self, data, left = None , right = None ):
         self.data = data
@@ -37,7 +37,7 @@ class BinaryTree:
                     current = current.right
                     continue
 
-                current.right = BinaryTree(data)
+                current.right = AVLTree(data)
 
                 if count > 1:
                     node_avo = check_direcao( node_avo, data )
@@ -52,7 +52,7 @@ class BinaryTree:
                     current = current.left
                     continue
 
-                current.left = BinaryTree(data)
+                current.left = AVLTree(data)
 
                 if count > 1:
                     node_avo = check_direcao( node_avo, data )
@@ -78,7 +78,7 @@ class BinaryTree:
         if self.data is None:
             return None
 
-        current : BinaryTree = self
+        current : AVLTree = self
         ant = None
 
         while True:
@@ -102,9 +102,9 @@ class BinaryTree:
                 ant = current
                 current = current.left
 
-    def printInOrder(self, node):
+    def printInOrder(self, node : "AVLTree"):
         """
-        Função que deve printar em ordem os valores
+            Função que deve printar em ordem os valores
         """
 
         if node is None:
@@ -159,7 +159,7 @@ class BinaryTree:
             return True
 
         # caso geral
-        aux : BinaryTree = current.left
+        aux : AVLTree = current.left
         ant_aux = current
 
         while aux.right is not None:
@@ -176,7 +176,7 @@ class BinaryTree:
 
 
 if __name__ == "__main__":
-    new_t = BinaryTree(11)
+    new_t = AVLTree(11)
     new_t.insertAvl(7)
     new_t.insertAvl(9)
     new_t.insertAvl(12)
