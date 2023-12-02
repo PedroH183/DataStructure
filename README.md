@@ -3,4 +3,4 @@ Inside this repository, you'll find code examples, about data structures.  From 
 
 # Observações
 São código de exemplo baseados em conceitos teóricos, então é possível que haja implementações diferente da literatura tradicional.
-Dentro deste repositório ficarão código exemplos das cadeiras de Pesquisa e Ordenação e de Estrutura de Dados.
+Dentro deste repositório ficarão códigos exemplos das cadeiras de Pesquisa e Ordenação e de Estrutura de Dados.
