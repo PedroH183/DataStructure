@@ -4,17 +4,17 @@ public class Bt{
         BinaryTreeNo root = new BinaryTreeNo(1);
 
         root.insert(root, 0);
-        root.insert(root, 3);
-        root.insert(root, 5);
-
-        System.out.println(root.value);
-        System.out.println(root.left.value); // 3
-        System.out.println(root.right.value); //0
-        System.out.println(root.left.left.value); // 5
+        root.insert(root, 12);
+        root.insert(root, 17);
+        root.insert(root, 11);
+        root.insert(root, 8);
+        root.insert(root, 10);
 
 
-        root.delete(root, 0);
-        System.out.println(root.value);
-        System.out.println(root.right.value);
+        // System.out.println(root.right.value);
+
+        BinaryTreeNo.delete(root, 1);
+        System.out.println(root.value); // expected 8
+
     }
 }
