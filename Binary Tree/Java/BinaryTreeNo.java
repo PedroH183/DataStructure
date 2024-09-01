@@ -26,16 +26,29 @@ public class BinaryTreeNo{
     }
 
     BinaryTreeNo delete(BinaryTreeNo root, int value){
-        if(root.value == value){ return root;}
+        if(root.value == value){ 
+
+            if (root.left == null && root.right == null){
+                return null;
+            }
+
+            if(root.left == null){
+                return root.right;
+            }
+
+            if(root.right == null){
+                return root.left;
+            }
+
+            BinaryTreeNo aux = root.right;
+            while(aux.left != null){
+                aux = aux.left; // pegando o valor mais a esquerda
+            }
+            return aux;
+        }
 
         if(root.value < value){
-            BinaryTreeNo nodeToDelete = root.delete(root.right, value);
-
-            // continue ... 
-            // if(nodeToDelete.left != null && nodeToDelete.right != null){
-                // root.value = root.left.value;
-            // }
-
+            root.right = root.delete(root.right, value);
         }
         if(root.value > value){
             root.left = root.delete(root.left, value);
