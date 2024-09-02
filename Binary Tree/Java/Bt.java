@@ -13,8 +13,9 @@ public class Bt{
 
         // System.out.println(root.right.value);
 
-        BinaryTreeNo.delete(root, 1);
-        System.out.println(root.value); // expected 8
+        // BinaryTreeNo.delete(root, 1);
+        // System.out.println(root.value); // expected 8
 
+        BinaryTreeNo.inOrderPrint(root); // expected 0, 1, 8, 10, 11, 12, 17
     }
 }

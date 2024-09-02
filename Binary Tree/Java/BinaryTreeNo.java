@@ -28,7 +28,6 @@ public class BinaryTreeNo{
 
     public static BinaryTreeNo inOrderPrint(BinaryTreeNo root){
         // inOrder significa em ordem crescente
-        // do mais a esquerda até o mais a direita
         if(root == null){ return null; }
 
         inOrderPrint(root.left);
@@ -70,7 +69,8 @@ public class BinaryTreeNo{
 
             root.value = searchParentInOrder(root.right);
             root.right = delete(root.right, root.value);
-        }
+        }  root.right = delete(root.right, root.value);
+    }
 
         if(root.value < value){
             root.right = delete(root.right, value);
